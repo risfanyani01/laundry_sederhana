@@ -1,1 +1,1 @@
-# laundry_sederhana
+# laundry_sederhana menggunakan odoo14
