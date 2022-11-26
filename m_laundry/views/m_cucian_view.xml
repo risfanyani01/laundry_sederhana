@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+<odoo>
+    <data>
+
+        <record id="model_cuian_view_search" model="ir.ui.view">
+            <field name="name">model.cucian.search</field>
+            <field name="model">model.cucian</field>
+            <field name="arch" type="xml">
+                <search string="Search Cucian">
+                    <field name="name" string="Cucian" filter_domain="[('name', 'ilike', self)]"/>
+                    <group string="Group By">
+                        <filter name="responsible" string="Petugas" context="{'group_by': 'petugas_id'}"/>
+                    </group>
+                    <searchpanel>
+                        <field name="status" icon="fa-signal" enable_counters="1"/>
+                    </searchpanel>
+                </search>
+            </field>
+        </record>
+
+        <record id="model_cucian_view_tree" model="ir.ui.view">
+            <field name="name">model.cucian.tree</field>
+            <field name="model">model.cucian</field>
+            <field name="arch" type="xml">
+                <tree string="Cucian List">
+                    <field name="name"/>
+                    <field name="petugas_id" />
+                    <field name="jenis_cucian_id"/>
+                    <field name="tanggal_masuk"/>
+                    <field name="berat"/>
+                    <field name="harga"/>
+                    <field name="status" widget="badge"/>
+                </tree>
+            </field>
+        </record>
+
+       <record id="model_cucian_view_form" model="ir.ui.view">
+           <field name="name">model.cucian.form</field>
+           <field name="model">model.cucian</field>
+           <field name="arch" type="xml">
+               <form string="Cucian Form">
+                    <header>
+                        <button type="object" name="func_proses" string="Proses" attrs="{'invisible': [('status', '!=', 'belum')]}" class="oe_highlight" />
+                        <button type="object" name="func_selesai" string="Selesai" attrs="{'invisible': [('status', '!=', 'proses')]}" class="oe_highlight" />
+                        <button type="object" name="func_diambil" string="Diambil" attrs="{'invisible': [('status', '!=', 'selesai')]}" class="oe_highlight" />
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                   <sheet>
+                    <div class="oe_title">
+                        <!-- <h1>
+                            <field name="name"/>
+                        </h1> -->
+                    </div>
+
+                      <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="jenis_cucian_id"/>
+                            <field name="tanggal_masuk"/>                      
+                            <field name="berat"/>
+                            <field name="harga"/>
+                        </group>
+                        <group>
+                            <field name="petugas_id" attrs="{'readonly': [('status', '!=', 'belum')]}"/>
+                        </group>
+                      </group>
+
+                        <notebook>
+                            <page string="Cucian Tambahan">
+                                <group>
+                                    <field name="cucian_tambahan_ids" nolabel="1" option="{'reload_on_button': True}">
+                                        <tree edit="true" editable="button" create="true" delete="true">
+                                            <field name="cucian_tambahan" />
+                                            <field name="harga_tambahan" />
+                                            <field name="kuantitas" />
+                                        </tree>
+                                    </field>
+                                </group>
+                            </page>
+                        </notebook>
+                   </sheet>
+               </form>
+           </field>
+        </record>
+
+        <record id="cucian_actions_id" model="ir.actions.act_window">
+            <field name="name">Cucian</field>
+            <field name="res_model">model.cucian</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p name="o_view_nocontent_smiling_face">
+                    Belum Ada Cucian Masuk
+                </p>
+            </field>
+        </record>
+
+        <record id="seq_model_cucian" model="ir.sequence">
+            <field name="name">Cucian</field>
+            <field name="code">model.cucian</field>
+            <field name="prefix">MC/%(year)s/%(month)s/</field>
+            <field name="padding">6</field>
+        </record>
+
+    </data>
+</odoo>

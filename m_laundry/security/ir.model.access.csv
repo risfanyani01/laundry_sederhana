@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_model_cucian,access_model_cucian,model_model_cucian,,1,1,1,1
+access_jenis_cucian,access_jenis_cucian,model_jenis_cucian,,1,1,1,1
+access_cucian_tambahan,access_cucian_tambahan,model_cucian_tambahan,,1,1,1,1

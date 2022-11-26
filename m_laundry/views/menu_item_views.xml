@@ -1,0 +1,37 @@
+<odoo>
+    
+    <menuitem
+        id="menu_dashboard_laundry_id"
+        name="Berkah Laundry"
+        web_icon="m_laundry,static/description/icon.png"/>
+
+        <menuitem
+            id="menu_bar_laundry_cucian_id"
+            name="Cucian"
+            parent="menu_dashboard_laundry_id"/>
+
+            <menuitem
+                id="menu_item_cucian_id"
+                name="Data Cucian"
+                parent="menu_bar_laundry_cucian_id"
+                action="cucian_actions_id"/>
+
+        <menuitem
+            id="menu_bar_laundry_karyawan_id"
+            name="Karyawan"
+            parent="menu_dashboard_laundry_id"
+            action="hr.open_view_employee_list_my"/>
+        
+        <menuitem 
+            id="menu_bar_laundry_pelanggan_id" 
+            name="Pelanggan"
+            parent="menu_dashboard_laundry_id" 
+            action="account.res_partner_action_customer"/>
+
+        <menuitem 
+            id="menu_bar_laundry_transaksi_id" 
+            name="Transaksi"
+            parent="menu_dashboard_laundry_id" 
+            action="account.action_move_out_invoice_type"/>
+
+</odoo>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+       
+          <record id="hr_employee_inherit_list" model="ir.ui.view">
+            <field name="name">hr.employee.inherit.view.list</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_phone']" position="before">
+                    <field name="name" />
+                    <field name="jenis_kelamin" />
+                    <field name="tanggal_lahir" />
+                    <field name="tanggal_bergabung" />
+                    <field name="alamat" />
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_employee_inherit_form" model="ir.ui.view">
+            <field name="name">hr.employee.inherit.view.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='image_1920']" position="before">
+                    <div class="oe_title">
+                        <!-- <h1>
+                            <field name="ref"/>
+                        </h1> -->
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='work_phone']" position="before">
+                    <field name="jenis_kelamin" />
+                    <field name="tanggal_lahir" />
+                    <field name="tanggal_bergabung" />
+                    <field name="alamat" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+
+    <record id="seq_model_karyawan" model="ir.sequence">
+            <field name="name">Karyawan</field>
+            <field name="code">hr.employee</field>
+            <field name="prefix">KR/%(year)s/%(month)s/</field>
+            <field name="padding">6</field>
+    </record>
+    
+
+</odoo>

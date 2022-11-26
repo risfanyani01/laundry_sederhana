@@ -1,0 +1,52 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <data>
+        <record id="jenis_cucian_view_tree" model="ir.ui.view">
+            <field name="name">jenis.cucian.tree</field>
+            <field name="model">jenis.cucian</field>
+            <field name="arch" type="xml">
+                <tree string="Jenis Cucian List">
+                    <field name="name"/>
+                    <field name="harga"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="jenis_cucian_view_form" model="ir.ui.view">
+            <field name="name">jenis.cucian.view.form</field>
+            <field name="model">jenis.cucian</field>
+            <field name="arch" type="xml">
+                <form string="Jenis Cucian Form">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="harga"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="jenis_cucian_new_action_id" model="ir.actions.act_window">
+            <field name="name">Jenis Cucian</field>
+            <field name="res_model">jenis.cucian</field>
+            <field name="view_mode">tree,form</field>            
+        </record>
+
+        <record id="seq_jenis_cucian" model="ir.sequence">
+            <field name="name">Jenis Cucian</field>
+            <field name="code">jenis.cucian</field>
+            <field name="prefix">JN/%(year)s/%(month)s/</field>
+            <field name="padding">6</field>
+        </record>
+
+        <menuitem
+                id="menu_item_jenis_cucian_id"
+                name="Jenis Cucian"
+                parent="menu_bar_laundry_cucian_id"
+                action="jenis_cucian_new_action_id"/>
+
+    </data>
+
+</odoo>
